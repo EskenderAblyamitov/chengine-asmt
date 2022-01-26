@@ -27,6 +27,7 @@ public class OrderService : IOrderService
                 Quantity = g.Sum(x => x.Quantity),
                 MerchantProductNo = g.First().MerchantProductNo
             })
+            .OrderByDescending(x => x.Quantity)
             .Skip(0)
             .Take(count);
 
