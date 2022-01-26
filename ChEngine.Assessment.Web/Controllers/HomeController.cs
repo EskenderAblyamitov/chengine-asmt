@@ -17,6 +17,10 @@ namespace ChEngine.Assessment.Web.Controllers
             _productService = productService;
         }
 
+        /// <summary>
+        /// Home page
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             var viewModel = new HomeViewModel();

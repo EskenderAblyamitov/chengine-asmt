@@ -5,6 +5,7 @@ using RestSharp;
 
 namespace ChEngine.Assessment.Services.API;
 
+/// <inheritdoc />
 public class ProductsApi : BaseApi, IProductsApi
 {
     private const string PATCH_URL = "/v2/products/{merchant_product_no}";
@@ -13,6 +14,7 @@ public class ProductsApi : BaseApi, IProductsApi
     {
     }
 
+    /// <inheritdoc />
     public async Task<PatchProductResult> PatchAsync(string merchantProductNo, PatchProductRequest patchRequest)
     {
         var request = new RestRequest(PATCH_URL, Method.Patch);

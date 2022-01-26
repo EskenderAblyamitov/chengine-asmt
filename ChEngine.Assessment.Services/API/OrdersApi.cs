@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ChEngine.Assessment.Services.API;
 
+/// <inheritdoc />
 public class OrdersApi : BaseApi, IOrdersApi
 {
     private const string ORDERS_BY_FILTER_URL = "/v2/orders";
@@ -14,6 +15,7 @@ public class OrdersApi : BaseApi, IOrdersApi
     {
     }
 
+    /// <inheritdoc />
     public async Task<IEnumerable<Order>> GetOrdersByStatusAsync(OrderStatus status)
     {
         var request = new RestRequest(ORDERS_BY_FILTER_URL, Method.Get);

@@ -4,6 +4,7 @@ using ChEngine.Assessment.Services.Models;
 
 namespace ChEngine.Assessment.Services;
 
+/// <inheritdoc />
 public class OrderService : IOrderService
 {
     private readonly IOrdersApi _ordersApi;
@@ -13,6 +14,7 @@ public class OrderService : IOrderService
         _ordersApi = ordersApi;
     }
 
+    /// <inheritdoc />
     public async Task<IEnumerable<SoldProductDto>> GetTopSoldProducts(int count)
     {
         var inProgressOrders = await _ordersApi.GetOrdersByStatusAsync(OrderStatus.IN_PROGRESS);

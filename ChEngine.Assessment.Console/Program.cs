@@ -5,11 +5,13 @@ using ChEngine.Assessment.Services.DTO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+// Add and build configuration (to support config files)
 var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false)
                 .Build();
 
+// Add services to the container and build service provider
 var serviceProvider = new ServiceCollection()
                 .AddScoped<IOrdersApi, OrdersApi>()
                 .AddScoped<IProductsApi, ProductsApi>()
@@ -18,9 +20,11 @@ var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configBuilder)
                 .BuildServiceProvider();
 
+// Get required services from the container
 var orderService = serviceProvider.GetService<IOrderService>();
 var productService = serviceProvider.GetService<IProductService>();
 
+// Execute business logic and display results to the console output
 if (orderService != null)
 {
     IEnumerable<SoldProductDto>? topSoldProducts = null;

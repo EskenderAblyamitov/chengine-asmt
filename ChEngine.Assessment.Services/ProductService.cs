@@ -3,6 +3,7 @@ using ChEngine.Assessment.Services.Models;
 
 namespace ChEngine.Assessment.Services;
 
+/// <inheritdoc />
 public class ProductService : IProductService
 {
     private readonly IProductsApi _productsApi;
@@ -12,6 +13,7 @@ public class ProductService : IProductService
         _productsApi = productsApi;
     }
 
+    /// <inheritdoc />
     public async Task SetStockAsync(string merchantProductNo, int stock)
     {
         var patchRequest = new PatchProductRequest
