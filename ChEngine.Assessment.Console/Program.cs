@@ -1,9 +1,11 @@
 ﻿using ChEngine.Assessment.Services;
+using ChEngine.Assessment.Services.API;
 using ChEngine.Assessment.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 var serviceProvider = new ServiceCollection()
                 .AddScoped<IOrderService, OrderService>()
+                .AddScoped<IOrdersApi, OrdersApi>()
                 .BuildServiceProvider();
 
 var orderService = serviceProvider.GetService<IOrderService>();

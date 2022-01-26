@@ -2,6 +2,8 @@
 
 public class SoldProductDto
 {
+    public string? MerchantProductNo { get; set; }
+
     public string? Name { get; set; }
 
     public string? Gtin { get; set; }
