@@ -2,13 +2,20 @@
 using ChEngine.Assessment.Services.API;
 using ChEngine.Assessment.Services.Contracts;
 using ChEngine.Assessment.Services.DTO;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false)
+                .Build();
 
 var serviceProvider = new ServiceCollection()
                 .AddScoped<IOrdersApi, OrdersApi>()
                 .AddScoped<IProductsApi, ProductsApi>()
                 .AddScoped<IOrderService, OrderService>()
                 .AddScoped<IProductService, ProductService>()
+                .AddSingleton<IConfiguration>(configBuilder)
                 .BuildServiceProvider();
 
 var orderService = serviceProvider.GetService<IOrderService>();

@@ -1,5 +1,6 @@
 ﻿using ChEngine.Assessment.Services.Contracts;
 using ChEngine.Assessment.Services.Models;
+using Microsoft.Extensions.Configuration;
 using RestSharp;
 
 namespace ChEngine.Assessment.Services.API;
@@ -7,6 +8,10 @@ namespace ChEngine.Assessment.Services.API;
 public class ProductsApi : BaseApi, IProductsApi
 {
     private const string PATCH_URL = "/v2/products/{merchant_product_no}";
+
+    public ProductsApi(IConfiguration configuration) : base(configuration)
+    {
+    }
 
     public async Task<PatchProductResult> PatchAsync(string merchantProductNo, PatchProductRequest patchRequest)
     {

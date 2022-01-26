@@ -2,12 +2,17 @@
 using RestSharp;
 using ChEngine.Assessment.Services.Contracts;
 using ChEngine.Assessment.Services.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace ChEngine.Assessment.Services.API;
 
 public class OrdersApi : BaseApi, IOrdersApi
 {
     private const string ORDERS_BY_FILTER_URL = "/v2/orders";
+
+    public OrdersApi(IConfiguration configuration) : base(configuration)
+    {
+    }
 
     public async Task<IEnumerable<Order>> GetOrdersByStatusAsync(OrderStatus status)
     {
