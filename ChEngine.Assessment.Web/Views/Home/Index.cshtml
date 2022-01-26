@@ -1,8 +1,49 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model HomeViewModel;
+@{
+    ViewData["Title"] = "Top Sold Products";
+    var rowCounter = 1;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Top Sold Products</h1>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <table  class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">GTIN</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach(var product in Model.SoldProducts)
+                {
+                    <tr>
+                        <th scope="row">@rowCounter</th>
+                        <td>@product.Name</td>
+                        <td>@product.Gtin</td>
+                        <td>@product.Quantity</td>
+                    </tr>
+                    rowCounter++;
+                }
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            @if(Model.IsSuccess)
+            {
+                <div class="alert alert-primary" role="alert">@Model.UpdateStockMessage</div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+            }
+        </div>
+      </div>
+    </div>
 </div>

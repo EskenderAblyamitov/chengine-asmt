@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChEngine.Assessment.Services\ChEngine.Assessment.Services.csproj" />
+  </ItemGroup>
+
 </Project>

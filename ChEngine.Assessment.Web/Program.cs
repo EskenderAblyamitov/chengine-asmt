@@ -1,7 +1,15 @@
+using ChEngine.Assessment.Services;
+using ChEngine.Assessment.Services.API;
+using ChEngine.Assessment.Services.Contracts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IOrdersApi, OrdersApi>()
+                .AddScoped<IProductsApi, ProductsApi>()
+                .AddScoped<IOrderService, OrderService>()
+                .AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
