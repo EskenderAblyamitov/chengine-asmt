@@ -1,28 +1,58 @@
 ﻿using ChEngine.Assessment.Services;
 using ChEngine.Assessment.Services.API;
 using ChEngine.Assessment.Services.Contracts;
+using ChEngine.Assessment.Services.DTO;
 using Microsoft.Extensions.DependencyInjection;
 
 var serviceProvider = new ServiceCollection()
-                .AddScoped<IOrderService, OrderService>()
                 .AddScoped<IOrdersApi, OrdersApi>()
+                .AddScoped<IProductsApi, ProductsApi>()
+                .AddScoped<IOrderService, OrderService>()
+                .AddScoped<IProductService, ProductService>()
                 .BuildServiceProvider();
 
 var orderService = serviceProvider.GetService<IOrderService>();
+var productService = serviceProvider.GetService<IProductService>();
 
-if (orderService == null)
+if (orderService != null)
 {
-    Console.WriteLine($"Unable to get service of type {typeof(IOrderService).Name}");
-}
-else
-{
-    var topSoldProducts = await orderService.GetTopSoldProducts(5);
-    
-    if(topSoldProducts?.Any() == true)
+    IEnumerable<SoldProductDto>? topSoldProducts = null;
+
+    try
+    {
+        topSoldProducts = await orderService.GetTopSoldProducts(5);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error: Unable to get top sold products. ErrMsg: {ex.Message}");
+    }
+
+    if (topSoldProducts?.Any() == true)
     {
         foreach (var product in topSoldProducts)
         {
             Console.WriteLine(product.ToString());
         }
+
+        if (productService != null)
+        {
+            var merchantProductNo = topSoldProducts.First().MerchantProductNo;
+            var newStock = 25;
+
+            try
+            {
+                await productService.SetStockAsync(merchantProductNo, newStock);
+
+                Console.WriteLine();
+                Console.WriteLine($"The stock has been set to {newStock} for product {merchantProductNo}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: Unable to set stock for {merchantProductNo}. ErrMsg: {ex.Message}");
+            }
+        }
     }
 }
+
+Console.WriteLine("Press any key to exit...");
+Console.ReadKey();
