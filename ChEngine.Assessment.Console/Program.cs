@@ -1,5 +1,4 @@
-﻿using ChEngine.Assessment.Services;
-using ChEngine.Assessment.Services.API;
+﻿using ChEngine.Assessment.Composition;
 using ChEngine.Assessment.Services.Contracts;
 using ChEngine.Assessment.Services.DTO;
 using Microsoft.Extensions.Configuration;
@@ -13,10 +12,7 @@ var configBuilder = new ConfigurationBuilder()
 
 // Add services to the container and build service provider
 var serviceProvider = new ServiceCollection()
-                .AddScoped<IOrdersApi, OrdersApi>()
-                .AddScoped<IProductsApi, ProductsApi>()
-                .AddScoped<IOrderService, OrderService>()
-                .AddScoped<IProductService, ProductService>()
+                .RegisterTypes()
                 .AddSingleton<IConfiguration>(configBuilder)
                 .BuildServiceProvider();
 

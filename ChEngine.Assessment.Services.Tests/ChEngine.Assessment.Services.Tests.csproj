@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ChEngine.Assessment.ApiClient\ChEngine.Assessment.ApiClient.csproj" />
     <ProjectReference Include="..\ChEngine.Assessment.Services\ChEngine.Assessment.Services.csproj" />
   </ItemGroup>
 

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChEngine.Assessment.Services\ChEngine.Assessment.Services.csproj" />
+    <ProjectReference Include="..\ChEngine.Assessment.Composition\ChEngine.Assessment.Composition.csproj" />
   </ItemGroup>
 
 </Project>

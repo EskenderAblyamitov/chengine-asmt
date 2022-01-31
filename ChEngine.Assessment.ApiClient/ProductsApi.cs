@@ -1,9 +1,9 @@
-﻿using ChEngine.Assessment.Services.Contracts;
-using ChEngine.Assessment.Services.Models;
+﻿using ChEngine.Assessment.ApiClient.Contracts;
+using ChEngine.Assessment.ApiClient.Models;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
 
-namespace ChEngine.Assessment.Services.API;
+namespace ChEngine.Assessment.ApiClient.API;
 
 /// <inheritdoc />
 public class ProductsApi : BaseApi, IProductsApi

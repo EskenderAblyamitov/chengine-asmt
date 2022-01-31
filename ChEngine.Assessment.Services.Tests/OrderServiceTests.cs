@@ -1,5 +1,6 @@
+using ChEngine.Assessment.ApiClient.Contracts;
+using ChEngine.Assessment.ApiClient.Models;
 using ChEngine.Assessment.Services.Contracts;
-using ChEngine.Assessment.Services.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;

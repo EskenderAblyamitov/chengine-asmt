@@ -5,11 +5,21 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChEngine.Assessment.Console", "ChEngine.Assessment.Console\ChEngine.Assessment.Console.csproj", "{CA4EAAA6-6F72-472A-92D7-19C1A7A0061D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChEngine.Assessment.Services", "ChEngine.Assessment.Services\ChEngine.Assessment.Services.csproj", "{C857F778-B951-4F64-AC8C-F2B96B0F8184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChEngine.Assessment.Services", "ChEngine.Assessment.Services\ChEngine.Assessment.Services.csproj", "{C857F778-B951-4F64-AC8C-F2B96B0F8184}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChEngine.Assessment.Services.Tests", "ChEngine.Assessment.Services.Tests\ChEngine.Assessment.Services.Tests.csproj", "{4E58BF30-C37F-46C0-88DF-B282683326AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChEngine.Assessment.Services.Tests", "ChEngine.Assessment.Services.Tests\ChEngine.Assessment.Services.Tests.csproj", "{4E58BF30-C37F-46C0-88DF-B282683326AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChEngine.Assessment.Web", "ChEngine.Assessment.Web\ChEngine.Assessment.Web.csproj", "{A96D9209-451F-4F77-A118-2EF86F75DC93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChEngine.Assessment.Web", "ChEngine.Assessment.Web\ChEngine.Assessment.Web.csproj", "{A96D9209-451F-4F77-A118-2EF86F75DC93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Applications", "1. Applications", "{B2CA754A-6C47-4A22-887D-0F1D984C88CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domain", "2. Domain", "{2968883E-4C2E-4DEE-B2A0-B349779F0301}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infrastructure", "3. Infrastructure", "{A99C4537-4402-46C5-9628-8EBA99C44685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChEngine.Assessment.ApiClient", "ChEngine.Assessment.ApiClient\ChEngine.Assessment.ApiClient.csproj", "{D80047B1-6B6A-4D99-9E36-EBDCE3409AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChEngine.Assessment.Composition", "ChEngine.Assessment.Composition\ChEngine.Assessment.Composition.csproj", "{B3B02659-9AD6-4D11-8366-3A57A1FE6C35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +43,25 @@ Global
 		{A96D9209-451F-4F77-A118-2EF86F75DC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A96D9209-451F-4F77-A118-2EF86F75DC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A96D9209-451F-4F77-A118-2EF86F75DC93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D80047B1-6B6A-4D99-9E36-EBDCE3409AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D80047B1-6B6A-4D99-9E36-EBDCE3409AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D80047B1-6B6A-4D99-9E36-EBDCE3409AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D80047B1-6B6A-4D99-9E36-EBDCE3409AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B02659-9AD6-4D11-8366-3A57A1FE6C35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B02659-9AD6-4D11-8366-3A57A1FE6C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B02659-9AD6-4D11-8366-3A57A1FE6C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B02659-9AD6-4D11-8366-3A57A1FE6C35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CA4EAAA6-6F72-472A-92D7-19C1A7A0061D} = {B2CA754A-6C47-4A22-887D-0F1D984C88CA}
+		{C857F778-B951-4F64-AC8C-F2B96B0F8184} = {2968883E-4C2E-4DEE-B2A0-B349779F0301}
+		{4E58BF30-C37F-46C0-88DF-B282683326AE} = {2968883E-4C2E-4DEE-B2A0-B349779F0301}
+		{A96D9209-451F-4F77-A118-2EF86F75DC93} = {B2CA754A-6C47-4A22-887D-0F1D984C88CA}
+		{D80047B1-6B6A-4D99-9E36-EBDCE3409AA6} = {A99C4537-4402-46C5-9628-8EBA99C44685}
+		{B3B02659-9AD6-4D11-8366-3A57A1FE6C35} = {A99C4537-4402-46C5-9628-8EBA99C44685}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5EB32148-46B0-4172-978A-51D7E0A927D7}

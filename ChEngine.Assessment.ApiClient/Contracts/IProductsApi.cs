@@ -1,6 +1,6 @@
-﻿using ChEngine.Assessment.Services.Models;
+﻿using ChEngine.Assessment.ApiClient.Models;
 
-namespace ChEngine.Assessment.Services.Contracts;
+namespace ChEngine.Assessment.ApiClient.Contracts;
 
 /// <summary>
 /// Products API provider

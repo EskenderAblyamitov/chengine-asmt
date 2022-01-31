@@ -1,4 +1,4 @@
-﻿namespace ChEngine.Assessment.Services.Models;
+﻿namespace ChEngine.Assessment.ApiClient.Models;
 
 internal class ApiResponse<T>
 {

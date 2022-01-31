@@ -1,10 +1,10 @@
 ﻿using System.Net;
 using RestSharp;
-using ChEngine.Assessment.Services.Contracts;
-using ChEngine.Assessment.Services.Models;
+using ChEngine.Assessment.ApiClient.Contracts;
+using ChEngine.Assessment.ApiClient.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace ChEngine.Assessment.Services.API;
+namespace ChEngine.Assessment.ApiClient.API;
 
 /// <inheritdoc />
 public class OrdersApi : BaseApi, IOrdersApi

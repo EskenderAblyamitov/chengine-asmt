@@ -1,15 +1,10 @@
-using ChEngine.Assessment.Services;
-using ChEngine.Assessment.Services.API;
-using ChEngine.Assessment.Services.Contracts;
+using ChEngine.Assessment.Composition;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IOrdersApi, OrdersApi>()
-                .AddScoped<IProductsApi, ProductsApi>()
-                .AddScoped<IOrderService, OrderService>()
-                .AddScoped<IProductService, ProductService>();
+builder.Services.RegisterTypes();
 
 var app = builder.Build();
 
@@ -23,11 +18,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

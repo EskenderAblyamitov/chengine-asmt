@@ -1,8 +1,8 @@
-﻿using ChEngine.Assessment.Services.Models;
+﻿using ChEngine.Assessment.ApiClient.Models;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
 
-namespace ChEngine.Assessment.Services.API;
+namespace ChEngine.Assessment.ApiClient.API;
 
 /// <summary>
 /// Base class to access the API with common logic
