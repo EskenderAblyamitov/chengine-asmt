@@ -4,11 +4,24 @@ namespace ChEngine.Assessment.Web.Models;
 
 public class HomeViewModel
 {
-    public bool IsSuccess { get; set; }
+    public HomeViewModel(BusinessLogicResultDto dto)
+    {
+        IsSetStockSuccess = dto.IsSetStockSuccess;
+        if(dto.IsGetSoldProductsSuccess) SoldProducts = dto.SoldProducts;
+        SetStockMessage = dto.SetStockMessage;
+        ErrorMessage = dto.ErrorMessage;
+    }
 
-    public IEnumerable<SoldProductDto> SoldProducts { get; set; } = new List<SoldProductDto>();
+    public HomeViewModel(string errorMessage)
+    {
+        ErrorMessage = errorMessage;
+    }
 
-    public string? UpdateStockMessage { get; set; }
+    public IEnumerable<SoldProductDto>? SoldProducts { get; set; } = new List<SoldProductDto>();
+
+    public bool IsSetStockSuccess { get; set; }
+
+    public string? SetStockMessage { get; set; }
 
     public string? ErrorMessage { get; set; }
 }

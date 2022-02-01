@@ -35,9 +35,9 @@
       </div>
       <div class="row justify-content-md-center">
         <div class="col-md-auto">
-            @if(Model.IsSuccess)
+            @if(Model.IsSetStockSuccess)
             {
-                <div class="alert alert-primary" role="alert">@Model.UpdateStockMessage</div>
+                <div class="alert alert-primary" role="alert">@Model.SetStockMessage</div>
             }
             else
             {

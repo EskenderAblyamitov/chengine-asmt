@@ -14,7 +14,8 @@ namespace ChEngine.Assessment.Composition
                 .AddScoped<IOrdersApi, OrdersApi>()
                 .AddScoped<IProductsApi, ProductsApi>()
                 .AddScoped<IOrderService, OrderService>()
-                .AddScoped<IProductService, ProductService>();
+                .AddScoped<IProductService, ProductService>()
+                .AddScoped<IAssessmentService, AssessmentService>();
 
             return services;
         }

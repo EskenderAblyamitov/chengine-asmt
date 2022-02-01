@@ -1,6 +1,5 @@
 ﻿using ChEngine.Assessment.Composition;
-using ChEngine.Assessment.Services.Contracts;
-using ChEngine.Assessment.Services.DTO;
+using ChEngine.Assessment.Console;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,50 +15,10 @@ var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configBuilder)
                 .BuildServiceProvider();
 
-// Get required services from the container
-var orderService = serviceProvider.GetService<IOrderService>();
-var productService = serviceProvider.GetService<IProductService>();
+// Execute business logic
+var businessLogic = new BusinessLogic(serviceProvider);
+await businessLogic.Run();
 
-// Execute business logic and display results to the console output
-if (orderService != null)
-{
-    IEnumerable<SoldProductDto>? topSoldProducts = null;
-
-    try
-    {
-        topSoldProducts = await orderService.GetTopSoldProducts(5);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error: Unable to get top sold products. ErrMsg: {ex.Message}");
-    }
-
-    if (topSoldProducts?.Any() == true)
-    {
-        foreach (var product in topSoldProducts)
-        {
-            Console.WriteLine(product.ToString());
-        }
-
-        if (productService != null)
-        {
-            var merchantProductNo = topSoldProducts.First().MerchantProductNo;
-            var newStock = 25;
-
-            try
-            {
-                await productService.SetStockAsync(merchantProductNo, newStock);
-
-                Console.WriteLine();
-                Console.WriteLine($"The stock has been set to {newStock} for product {merchantProductNo}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: Unable to set stock for {merchantProductNo}. ErrMsg: {ex.Message}");
-            }
-        }
-    }
-}
-
+Console.WriteLine();
 Console.WriteLine("Press any key to exit...");
 Console.ReadKey();

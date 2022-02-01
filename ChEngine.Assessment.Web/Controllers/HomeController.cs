@@ -6,15 +6,11 @@ namespace ChEngine.Assessment.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IOrderService _orderService;
-        private readonly IProductService _productService;
+        private readonly IAssessmentService _assessmentService;
 
-        public HomeController(ILogger<HomeController> logger, IOrderService orderService, IProductService productService)
+        public HomeController(IAssessmentService assessmentService)
         {
-            _logger = logger;
-            _orderService = orderService;
-            _productService = productService;
+            _assessmentService = assessmentService;
         }
 
         /// <summary>
@@ -23,27 +19,8 @@ namespace ChEngine.Assessment.Web.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var viewModel = new HomeViewModel();
-
-            try
-            {
-                var topSoldProducts = await _orderService.GetTopSoldProducts(5);
-                viewModel.SoldProducts = topSoldProducts;
-
-                if (topSoldProducts?.Any() == true)
-                {
-                    var merchantProductNo = topSoldProducts.First().MerchantProductNo;
-                    var newStock = 25;
-                    await _productService.SetStockAsync(merchantProductNo, newStock);
-                    viewModel.UpdateStockMessage = $"The stock has been set to {newStock} for product {merchantProductNo}";
-                }
-
-                viewModel.IsSuccess = true;
-            }
-            catch (Exception ex)
-            {
-                viewModel.ErrorMessage = ex.Message;
-            }
+            var result = await _assessmentService.DoBusinessLogic();
+            var viewModel = new HomeViewModel(result);
 
             return View(viewModel);
         }
